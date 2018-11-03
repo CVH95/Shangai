@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11  -O3 -DNDEBUG   CMakeFiles/so2CPG.dir/src/so2_cpg_hexapod.cpp.o  -o ../bin/so2CPG -rdynamic 
