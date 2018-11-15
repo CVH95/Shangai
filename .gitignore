@@ -1,0 +1,11 @@
+# Ignore build directory
+build/
+
+# Ignore bin directory
+bin/
+
+# Ignore Dynamic Computation 
+DynamicComputation/
+
+# Ignore Neural Control
+NeuralControl/

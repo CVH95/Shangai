@@ -6,6 +6,12 @@ For a more detailed report on the project, go to the repo's [Wiki](https://githu
 
 ## 1. Project Description.
 
+### 1.1. Modular Neural Control
+
+Bio-inspired locomotion control design. MNC corresponds to the CPG-based open-loop control, which retrieves omnidirectional walking with multiple gaits (leg motion pattern). Basic schema of a modular controller:
+
+![MNC blocks](docs/MNC.png)
+
 ## 2. Robot Assembly Design.
 
 ## 3. Controller Design and Diagram.
