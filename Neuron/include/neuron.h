@@ -15,7 +15,12 @@
 #include <tuple>
 #include <map>
 #include <vector>
-#include <transfer_function.h>
+#include "transfer_function.h"
+
+using namespace std;
+
+// Forward Declarations.
+class transfer_function;
 
 class neuron{
 
@@ -34,6 +39,7 @@ class neuron{
 
         float activity;
         float output;
+        transfer_function G;
 };
 
 #endif /* NEURON_H_ */

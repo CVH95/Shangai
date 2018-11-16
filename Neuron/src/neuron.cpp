@@ -1,4 +1,4 @@
-#include <neuron.h>
+#include "neuron.h"
 
 // Constructor
 neuron::neuron()
@@ -11,7 +11,6 @@ neuron::neuron()
 // Requires defining a transfer function type.
 void neuron::tanh_output()
 {
-    transfer_function G;
     output = G.tanh(activity);
 
     /*

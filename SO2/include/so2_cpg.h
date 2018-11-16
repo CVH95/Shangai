@@ -3,8 +3,8 @@
 // Activity: A_i(t+1) = Sum[j=1, n](weight_ij * Output_j) + Bias_i
 // Activation function: Output_i = tanh(A_i)
 
-#ifndef SO2_H_
-#define SO2_H_
+//#ifndef SO2_H_
+//#define SO2_H_
 
 #include <iostream>
 #include <fstream>
@@ -16,12 +16,15 @@
 #include <vector>
 #include <sstream>
 #include <tuple>
-#include <neuron.h>
-#include <transfer_function.h>
+#include "neuron.h"
+
 
 #define PI 3.14159265
 
 using namespace std;
+
+// Forward Declarations.
+class neuron;
 
 class so2{
 
@@ -37,7 +40,7 @@ class so2{
 
         // Functions
         vector<float> timeSpace(float t0, float tf, int sample);
-        vector<tuple<float, float, float> > intraLegCoordination(vector<float> tsp);
+        vector<tuple<float, float, float> > intraLegCoordination(vector<float> tsp, vector<float> weights, vector<float> biases, float hz);
         vector<float> get_output();
         void udpate_output(vector<float> x);
 
@@ -45,6 +48,8 @@ class so2{
 
         float network_output1;
         float network_output2;
+        neuron n1;
+        neuron n2;
 };
 
-#endif /* SO2_H_ */
+//#endif /* SO2_H_ */

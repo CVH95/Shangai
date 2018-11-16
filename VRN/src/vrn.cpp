@@ -6,11 +6,9 @@ vrn::vrn()
     network_output = 0;
 }
 
-
-
-// Requires defining vector variables as:
+// Requires defining vector variables as inputs[2], weights[12], biases[12]:
 // inputs = (i1, i2)
-// weights = (w13, w14, w15, w16, w23, w24, w25,  w26, w37, w47, w57, w67) 
+// weights = (w13, w14, w15, w16, w23, w24, w25, w26, w37, w47, w57, w67) 
 // Weights must be defined in absolute value!!!!
 // biases = (b3, b4, b5, b6) 
 // Biases must be defined in absolute value!!!
@@ -20,12 +18,12 @@ vector<float> vrn::compute_vrn_network(vector<float> inputs, vector<float> weigh
 
     // Neurons
     neuron n1;// = new neuron::neuron();
-    neuron n2; // = new neuron::neuron();
-    neuron n3;//  = new neuron::neuron();
-    neuron n4;//  = new neuron::neuron();
-    neuron n5;//  = new neuron::neuron();
-    neuron n6;//  = new neuron::neuron();
-    neuron n7;//  = new neuron::neuron();
+    neuron n2;
+    neuron n3;
+    neuron n4;
+    neuron n5;
+    neuron n6;
+    neuron n7;
 
     // Activities in layer 1:
     n1.set_activity(inputs[0]);
@@ -81,6 +79,8 @@ float vrn::get_output()
     return network_output;
 }
 
+
+// Update outputs
 void vrn::update_network_output(float o7)
 {
     network_output = o7;

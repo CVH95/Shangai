@@ -20,6 +20,9 @@
 
 using namespace std;
 
+// Forward Declarations.
+class neuron;
+
 class vrn{
 
     public:
