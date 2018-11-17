@@ -26,10 +26,10 @@ add_library(transfer_function SHARED TransferFunction/src/transfer_function.cpp)
 add_library(neuron SHARED Neuron/src/neuron.cpp)
 
 # Create shared libraries
-#add_library(psn SHARED PSN/src/psn.cpp)
+add_library(psn SHARED PSN/src/psn.cpp)
 add_library(rk4 SHARED RK4/src/rk4.cpp)
 add_library(so2_cpg SHARED SO2/src/so2_cpg.cpp)
-#add_library(vrn SHARED VRN/src/vrn.cpp)
+add_library(vrn SHARED VRN/src/vrn.cpp)
 
 #link_directories(/usr/local/lib)
 

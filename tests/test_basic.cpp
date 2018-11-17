@@ -27,11 +27,11 @@ int main()
 
     so2 cpg;
 
-    vector<float> opts;
+    /*vector<float> opts;
     opts.push_back(0.25);
-    opts.push_back(0.75);
+    opts.push_back(0.75);*/
 
-    cpg.udpate_output(opts);
+    cpg.udpate_output(0.25, 0.75);
     vector<float> up_opts = cpg.get_output();
 
     cout << "CPG output = (" << up_opts[0] << ", " << up_opts[1] << ")" << endl;

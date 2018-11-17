@@ -1,4 +1,4 @@
-#include <vrn.h>
+#include "vrn.h"
 
 // Constructor
 vrn::vrn()
@@ -15,15 +15,6 @@ vrn::vrn()
 vector<float> vrn::compute_vrn_network(vector<float> inputs, vector<float> weights, vector<float> biases)
 {    
     vector<float> neuron_outputs;
-
-    // Neurons
-    neuron n1;// = new neuron::neuron();
-    neuron n2;
-    neuron n3;
-    neuron n4;
-    neuron n5;
-    neuron n6;
-    neuron n7;
 
     // Activities in layer 1:
     n1.set_activity(inputs[0]);

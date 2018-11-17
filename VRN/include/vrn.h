@@ -14,7 +14,7 @@
 #include <vector>
 #include <sstream>
 #include <tuple>
-#include <neuron.h>
+#include "neuron.h"
 
 #define PI 3.14159265
 
@@ -38,6 +38,14 @@ class vrn{
     private:
 
         float network_output;
+        // Neurons
+        neuron n1;
+        neuron n2;
+        neuron n3;
+        neuron n4;
+        neuron n5;
+        neuron n6;
+        neuron n7;
 };
 
 #endif /* VRN_H_ */

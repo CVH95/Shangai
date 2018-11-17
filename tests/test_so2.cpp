@@ -38,6 +38,10 @@ int main()
 
     // Network Parameters initialization
     
+    // Initialize outputs
+    float o1 = 0.0;
+    float o2 = 0.0;
+
     // Weights:
     vector<float> ws;
     float w11 = 1.4;
@@ -61,7 +65,7 @@ int main()
 
 
     cout << "Initialized with the following parameters:" << endl;
-    cout << "   >> Time: " << tf << "secs" << endl;
+    cout << "   >> Time: " << tf << " secs" << endl;
     cout << "   >> Sample: " << sample << endl;
     cout << "   >> Wave frequency: ";
     if(hz == 0.0)
@@ -75,8 +79,22 @@ int main()
     cout << "   >> Weights: {" << w11 << ", " << w22 << ", " << w12 << ", " << w21 << "}" << endl;
     cout << "   >> Biases: {" << b1 << ", " << b2 << "}" << endl << endl;
 
-
-    vector<tuple<float, float, float> > ntw_out = C.intraLegCoordination(tsp, ws, bs, hz);
+    // Compute SO2 Network
+    vector<tuple<float, float, float> > ntw_out;
+    for(size_t j; j<tsp.size(); j++)
+    {
+        float ti = tsp[j];
+        tuple<float, float, float> O = C.intraLegCoordination(ti, ws, bs, hz, o1, o2);
+        ntw_out.push_back(O);
+        
+        // Updates for next iteration
+        o1 = get<1>(ntw_out[j]);
+        o2 = get<2>(ntw_out[j]);
+        C.udpate_output(o1, o2);
+        //vector<float> oss = C.get_output();
+        //cout << "Output (ti, o1, o2) = (" << get<0>(ntw_out[j]) << ", " << oss[0] << ", " << oss[1] << ")" << endl;
+   
+    }
 
     // Storing data to later plots:
     ofstream fs1;

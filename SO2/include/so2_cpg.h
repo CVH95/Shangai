@@ -40,14 +40,16 @@ class so2{
 
         // Functions
         vector<float> timeSpace(float t0, float tf, int sample);
-        vector<tuple<float, float, float> > intraLegCoordination(vector<float> tsp, vector<float> weights, vector<float> biases, float hz);
+        tuple<float, float, float> intraLegCoordination(float ti, vector<float> weights, vector<float> biases, float hz, float o1, float o2);
         vector<float> get_output();
-        void udpate_output(vector<float> x);
+        void udpate_output(float x, float y);
 
     private:
 
         float network_output1;
         float network_output2;
+        //float o1;
+        //float o2;
         neuron n1;
         neuron n2;
 };

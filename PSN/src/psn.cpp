@@ -1,4 +1,4 @@
-#include <psn.h>
+#include "psn.h"
 
 // Constructor
 psn::psn()
@@ -20,20 +20,6 @@ vector<float> psn::compute_psn_network(vector <float> inputs, vector<float> weig
 {
     vector<float> neuron_outputs;
     
-    // Neurons
-    neuron n1;// = new neuron::neuron();
-    neuron n2;
-    neuron n3;
-    neuron n4;
-    neuron n5;
-    neuron n6;
-    neuron n7;
-    neuron n8;
-    neuron n9; 
-    neuron n10;
-    neuron n11;
-    neuron n12;
-
     // Activities in layer 1:
     float a1 = inputs[2] + biases[0];
     n1.set_activity(a1); // i3 
