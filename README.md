@@ -12,6 +12,15 @@ Bio-inspired locomotion control design. MNC corresponds to the CPG-based open-lo
 
 ![MNC blocks](other/MNC.png)
 
+The modular controller has 5 controlling inputs. Basic robot commands in terms of the inputs:
+
+|Action    |i1    |i2    |i3    |i4    |i5    |
+|----------|:----:|:----:|:----:|:----:|:----:|
+|Forward   |0     |1     |0     |-1    |-1    |
+|Backwards |0     |1     |0     |1     |1     |
+|Turn right|0     |1     |0     |-1    |1     |
+|Turn left |0     |1     |0     |1     |-1    |
+
 ## 2. Robot Assembly Design.
 
 ## 3. Controller Design and Diagram.

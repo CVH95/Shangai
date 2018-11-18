@@ -40,5 +40,11 @@ target_link_libraries(test_basic transfer_function neuron so2_cpg)
 add_executable(test_so2 tests/test_so2.cpp)
 target_link_libraries(test_so2 transfer_function neuron so2_cpg)
 
+add_executable(test_psn tests/test_psn.cpp)
+target_link_libraries(test_psn transfer_function neuron so2_cpg psn)
+
+add_executable(test_vrn tests/test_vrn.cpp)
+target_link_libraries(test_vrn transfer_function neuron so2_cpg psn vrn)
+
 # Output end message
 MESSAGE(${PROJECT_NAME} " done!")

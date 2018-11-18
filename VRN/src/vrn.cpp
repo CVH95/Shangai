@@ -6,7 +6,7 @@ vrn::vrn()
     network_output = 0;
 }
 
-// Requires defining vector variables as inputs[2], weights[12], biases[12]:
+// Requires defining vector variables as inputs[2], weights[12], biases[4]:
 // inputs = (i1, i2)
 // weights = (w13, w14, w15, w16, w23, w24, w25, w26, w37, w47, w57, w67) 
 // Weights must be defined in absolute value!!!!

@@ -10,7 +10,7 @@ psn::psn()
 
 // Requires defining vector variables as inputs[4], weights[16], biases[7]:
 // inputs = (i1, i2, i3, i4)
-// i1, i2 come from CG; i3 = - i4
+// i1, i2 come from CPG; i3 = - i4
 // weights = (w15, w18, w26, w27, w35, w37, w46, w48, w59, w610, w711, w812, w913, w1013, w1114, w1214) 
 // Weights must be defined in absolute value!!!!
 // biases = (b5, b9, b10, b11, b12, b13, b14) 
@@ -36,8 +36,8 @@ vector<float> psn::compute_psn_network(vector <float> inputs, vector<float> weig
     // Activities in layer 2:
     float a3 = inputs[0]*weights[0] - o1*weights[4];
     float a4 = inputs[1]*weights[2] - o2*weights[6];
-    float a5 = inputs[1]*weights[3] + o1*weights[5];
-    float a6 = inputs[0]*weights[1] + o1*weights[7];
+    float a5 = inputs[1]*weights[3] - o1*weights[5];
+    float a6 = inputs[0]*weights[1] - o2*weights[7];
     n3.set_activity(a3);
     n4.set_activity(a4);
     n5.set_activity(a5);
