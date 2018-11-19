@@ -46,5 +46,11 @@ target_link_libraries(test_psn transfer_function neuron so2_cpg psn)
 add_executable(test_vrn tests/test_vrn.cpp)
 target_link_libraries(test_vrn transfer_function neuron so2_cpg psn vrn)
 
+add_executable(test_sine_rectification tests/test_sine_rectification.cpp)
+target_link_libraries(test_sine_rectification transfer_function)
+
+add_executable(test_so2_rectification tests/test_so2_rectification.cpp)
+target_link_libraries(test_so2_rectification transfer_function neuron so2_cpg)
+
 # Output end message
 MESSAGE(${PROJECT_NAME} " done!")

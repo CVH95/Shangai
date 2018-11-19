@@ -72,6 +72,33 @@ vector<float> so2::get_output()
     return output;
 }
 
+// Threshold SO2 signal (dung beetle)
+float so2::threshold_so2_signal(float oi, float oi_prev)
+{
+    float _oi;
+    // First threshold, on y(x)
+    if(oi >= 0.0)
+    {
+        // Approximating derivative
+        float diff = oi - oi_prev;
+        // Second threshold, on y'(x)
+        if(diff >= 0.0)
+        {
+            _oi = oi;
+        }
+        else
+        {       
+            _oi = 0;
+        }
+    }
+    else
+    {
+        _oi = 0;
+    }
+
+    return _oi;
+}
+
 // Update output value (positional)
 void so2::udpate_output(float x, float y)
 {

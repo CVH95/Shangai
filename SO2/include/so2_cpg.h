@@ -42,6 +42,7 @@ class so2{
         vector<float> timeSpace(float t0, float tf, int sample);
         tuple<float, float, float> intraLegCoordination(float ti, vector<float> weights, vector<float> biases, float hz, float o1, float o2);
         vector<float> get_output();
+        float threshold_so2_signal(float oi, float oi_prev);
         void udpate_output(float x, float y);
 
     private:
