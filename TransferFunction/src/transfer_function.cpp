@@ -62,7 +62,7 @@ float transfer_function::step_threshold(float x, float threshold)
     return y;
 }
 
-// Hyperbolic tangent activation function 
+// Hyperbolic tangent transfer function 
 // Range [-1, 1]
 float transfer_function::tanh(float x)
 {

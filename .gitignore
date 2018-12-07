@@ -9,3 +9,18 @@ DynamicComputation/
 
 # Ignore Neural Control
 NeuralControl/
+
+# Ignore videos
+other/videos/ 
+
+# Ignore object files
+simulation/main.o
+simulation/Makefile.depend
+simulation/footcontacts.csv
+simulation/output.csv
+simulation/SpringyBotController.o
+simulation/SpringyBotSimulation.o
+simulation/start
+
+# Ignore genfiles
+genfiles/

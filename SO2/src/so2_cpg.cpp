@@ -58,8 +58,7 @@ tuple<float, float, float> so2::intraLegCoordination(float ti, vector<float> wei
     n2.tanh_output();
     o1 = n1.get_output();
     o2 = n2.get_output();
-    //cpg.push_back(make_tuple(ti, o1, o2));
-
+    
     return make_tuple(ti, o1, o2);
 }
 
