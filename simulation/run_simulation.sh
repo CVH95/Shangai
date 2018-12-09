@@ -1,5 +1,6 @@
 #!/bin/bash
 
 rm footcontacts.csv
-rm output.csv
+rm -r ../genfiles/simulation/
+mkdir ../genfiles/simulation
 ./start

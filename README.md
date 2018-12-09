@@ -18,7 +18,7 @@ The repo contains several directories and files:
  - **SO2:** C++ implementation of a class that defines an SO2 Central Pattern Generator network (L8 - Dynamic Computation and Muscle Model).
  - **TransferFuntion:** C++ implementation of a class with mathematical transfer functions commonly used in artificial neurons.
  - **VRN:** C++ implementation of a class to decine Velocity Reduction Networks (L9 - Modular Neural Control). 
- - **src:** Contains tests for the above projects.
+ - **tests:** Contains tests for the above projects.
 
 
 ### 1.2. Modular Neural Control

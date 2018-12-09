@@ -1,6 +1,6 @@
 /* 
 	CREATED on Dec 7th, 2018 by cavie17@student.sdu.dk
-	from SpringyBotWmptyController.h:
+	from SpringyBotPhaseController.h:
 
 */
 
@@ -24,6 +24,8 @@
 #include <fstream>
 #include <map>
 #include <string>
+#include <sstream> 
+#include <math.h>
 
 using namespace std;
 
@@ -48,9 +50,6 @@ class SpringyBotController : public AbstractController
 
 		virtual bool store(FILE* f) const override;
 		virtual bool restore(FILE* f) override;
-
-		// Save motor data
-		void store(double posFL, double posFR, double posBL, double posBR);
 	
 	protected:
 
@@ -66,10 +65,37 @@ class SpringyBotController : public AbstractController
 		double phaseSetpoint;
 
 		// Output files and vars
-		ofstream output;
+		ofstream output, sensored, controlled, feet;
 		double pwm_period;
 
+		// Save data
+		void store_motor_values(double posFL, double posFR, double posBL, double posBR);
+		void store_sensor_values(double FL, double FR, double BL, double BR);
+		void store_controller_values(double FL, double FR, double BL, double BR);
+		void store_gait_footprints(double FL, double FR, double BL, double BR);
 		string getGaitType(int type);
+
+	private:
+
+		// Closed-loop controller implementation
+		double phase_controller(double desired, double error);
+		double getFeedbackError(double, double);
+};
+
+// Simple 2D vector utility class for phase calculations
+class Vector 
+{
+	public:
+		double _x,_y;
+
+		Vector(double);
+		Vector(double,double);
+
+		double angle(Vector);
+		double smallestAngle(Vector);
+		double length();
+		double dot(Vector);
+		Vector rotate(double);
 };
 
 
