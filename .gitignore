@@ -21,6 +21,9 @@ simulation/output.csv
 simulation/SpringyBotController.o
 simulation/SpringyBotSimulation.o
 simulation/start
+simulation/ode.msg
+simulation/calculator/
+simulation/.history
 
 # Ignore genfiles
 genfiles/

@@ -78,6 +78,7 @@ class SpringyBotController : public AbstractController
 	private:
 
 		// Closed-loop controller implementation
+		double add_positions(double p1, double p2);
 		double phase_controller(double desired, double error);
 		double getFeedbackError(double, double);
 };
