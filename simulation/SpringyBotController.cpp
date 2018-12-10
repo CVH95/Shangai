@@ -27,8 +27,8 @@ SpringyBotController::SpringyBotController(const std::string& name)
 	cout << "---- Simulation of different gaits with SpringyBot: ----" << endl;
 	cout << "0: Nothing." << endl;
 	cout << "1: Forward walking at constant speed." << endl;
-	cout << "1: Forward bounding." << endl;
-	cout << "1: Forward trotting." << endl;
+	cout << "2: Forward trotting." << endl;
+	cout << "3: Forward galloping." << endl;
 	cout << "4: Forward pace gait." << endl;
 	cout << "Enter Gait Type:  ";
 	//cin >> setGait;
@@ -155,8 +155,8 @@ void SpringyBotController::step(const sensor* sensors, int sensornumber, motor* 
 	// Default: Constant speedPoint
 	if(setGait == 0)
 	{
-		pwm_period = 0;
-		speedSetpoint = 8.0;
+		pwm_period = 0.75;
+		double y = SpringyBotController::sine(speedSetpoint, pwm_period, 0, itime);
 
 		// Set phases
 		double phaseFL = 270 * (2*M_PI/360);
@@ -165,10 +165,10 @@ void SpringyBotController::step(const sensor* sensors, int sensornumber, motor* 
 		double phaseBR = 180 * (2*M_PI/360);
 
 		// Calculate Motor Positions 
-		posFL = SpringyBotController::add_positions(speedSetpoint, phaseFL); // Front Left +
-		posFR = SpringyBotController::add_positions(speedSetpoint, phaseFR); // Front Right -
-		posBL = SpringyBotController::add_positions(speedSetpoint, phaseBL); // Back Left +
-		posBR = SpringyBotController::add_positions(speedSetpoint, phaseBR); // Back Right -
+		posFL = SpringyBotController::add_positions(y, phaseFL); // Front Left +
+		posFR = SpringyBotController::add_positions(y, phaseFR); // Front Right -
+		posBL = SpringyBotController::add_positions(y, phaseBL); // Back Left +
+		posBR = SpringyBotController::add_positions(y, phaseBR); // Back Right -
 
 		// Feedback line
 		errorFL = SpringyBotController::getFeedbackError(posFL, leftFrontPosition);
@@ -221,7 +221,7 @@ void SpringyBotController::step(const sensor* sensors, int sensornumber, motor* 
 		motors[MIdx("right rear motor")] = controlBR;
 	}
 
-	// Forward Bound Gait
+	// Forward Trot Gait
 	else if (setGait == 2)
 	{
 		// Set signal parameters
@@ -253,12 +253,12 @@ void SpringyBotController::step(const sensor* sensors, int sensornumber, motor* 
 		motors[MIdx("right rear motor")] = controlBR;
 	}
 
-	// Forward Trot Gait
+	// Forward Gallop Gait
 	else if (setGait == 3)
 	{
 		// Set signal parameters
 		pwm_period = 0.75; 
-		speedSetpoint = 4.0;
+		//speedSetpoint = 4.0;
 
 		// Calculate Motor Positions 
 		posFL = SpringyBotController::sine(speedSetpoint, pwm_period, 180, itime); // Front Left +
@@ -293,8 +293,8 @@ void SpringyBotController::step(const sensor* sensors, int sensornumber, motor* 
 
 		// Calculate Motor Positions 
 		posFL = SpringyBotController::sine(speedSetpoint, pwm_period, 90, itime); // Front Left -
-		posFR = SpringyBotController::sine(speedSetpoint, pwm_period, 90, itime); // Front Right +
-		posBL = SpringyBotController::sine(speedSetpoint, pwm_period, 270, itime); // Back Left -
+		posFR = SpringyBotController::sine(speedSetpoint, pwm_period, 270, itime); // Front Right +
+		posBL = SpringyBotController::sine(speedSetpoint, pwm_period, 90, itime); // Back Left -
 		posBR = SpringyBotController::sine(speedSetpoint, pwm_period, 270, itime); // Back Right +
 
 		// Feedback line
@@ -498,11 +498,11 @@ string SpringyBotController::getGaitType(int type)
 	}
 	else if(type == 2)
 	{
-		gaitType = "Forward bound gait"; 
+		gaitType = "Forward trotting gait"; 
 	}
 	else if(type == 3)
 	{
-		gaitType = "Fordward trot gait";
+		gaitType = "Fordward galloping gait";
 	}
 	else if(type == 4)
 	{
