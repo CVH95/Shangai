@@ -21,41 +21,6 @@ The repo contains several directories and files:
  - **tests:** Contains tests for the above projects.
 
 
-### 1.2. Modular Neural Control
-
-Bio-inspired locomotion control design. MNC corresponds to the CPG-based open-loop control, which retrieves omnidirectional walking with multiple gaits (leg motion pattern). Basic schema of a modular controller:
-
-![MNC blocks](other/MNC.png)
-
-The modular controller has 5 controlling inputs. Basic robot commands in terms of the inputs:
-
-|Action    |i1    |i2    |i3    |i4    |i5    |
-|----------|:----:|:----:|:----:|:----:|:----:|
-|Forward   |0     |1     |0     |-1    |-1    |
-|Backwards |0     |1     |0     |1     |1     |
-|Turn right|0     |1     |0     |-1    |1     |
-|Turn left |0     |1     |0     |1     |-1    |
-
-## 2. Robot Assembly Design.
-
-## 3. Controller Design and Diagram.
-
-### 3.1. Phase controller (lower-level actuator controller)
-
-The different gaits are obtained by varying the **phase** between the legs, thus alternating the stance and swing phases between them. Therefore, it is of extreme importance to control the phase in each leg and keep it constant while executing a certain gait. The figure below shows the main phase control loop for each leg. The controller acts in a way such that it checks the difference phase between the CPG signal and the actual position reached by the motor. Up to a threshold error value, it compensates the error by adding/substracting. If the error is too big, then the controller stops the robot motion and sets all motors to home position, so that it can start walking again.
-
-![Phase controller](other/diagrams/control.png)
-
-### 3.2. Modular controller (higher-level controller)
-
-"Behavior control." Changes in gait, direction... provides learning and adaptation to new surfaces, inclination... 
-
-## 4. Implementation.
-
-## 5. Usage.
-
-## 6. Results and Conclusions.
-
 ## Authors
 
 Carlos Viescas Huerta.

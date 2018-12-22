@@ -1,0 +1,1 @@
+On-board logging interval: 100 milliseconds

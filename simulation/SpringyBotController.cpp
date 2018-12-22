@@ -32,7 +32,7 @@ SpringyBotController::SpringyBotController(const std::string& name)
 	cout << "4: Forward pace gait." << endl;
 	cout << "Enter Gait Type:  ";
 	//cin >> setGait;
-	setGait = 4;
+	setGait = 1;
 
 	ticks_since_init = 0.0;
 	itime = 0.0;
@@ -184,9 +184,9 @@ void SpringyBotController::step(const sensor* sensors, int sensornumber, motor* 
 
 		// Set motor speeds
 		motors[MIdx("left front motor")] = controlFL;
-		motors[MIdx("right front motor")] = controlFR;
+		motors[MIdx("right front motor")] = -controlFR;
 		motors[MIdx("left rear motor")] = controlBL;
-		motors[MIdx("right rear motor")] = controlBR;	
+		motors[MIdx("right rear motor")] = -controlBR;	
 	}
 
 	// Forward walking constant speed
@@ -367,7 +367,22 @@ double SpringyBotController::add_positions(double p1, double p2)
 // Controller to correct the phase of the motor positions
 double SpringyBotController::phase_controller(double desired, double error)
 {
-	return desired + error;
+	double corrected = 0;
+
+	// Calculate rectification
+	double rect = desired + error;
+
+	// Give a sign to the rectified value
+	if (desired>0)
+	{
+		corrected = rect;
+	}
+	else
+	{
+		corrected = -rect;
+	}
+
+	return corrected;
 }
 
 
